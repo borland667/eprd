@@ -1,0 +1,100 @@
+centosdev01:/usr/src/eprd-0.4.0/tools # fio ssd-test.fio 
+seq-read: (g=0): rw=read, bs=4K-4K/4K-4K, ioengine=libaio, iodepth=4
+rand-read: (g=1): rw=randread, bs=4K-4K/4K-4K, ioengine=libaio, iodepth=4
+seq-write: (g=2): rw=write, bs=4K-4K/4K-4K, ioengine=libaio, iodepth=4
+rand-write: (g=3): rw=randwrite, bs=4K-4K/4K-4K, ioengine=libaio, iodepth=4
+fio 2.0.7
+Starting 4 processes
+seq-read: Laying out IO file(s) (1 file(s) / 10240MB)
+Jobs: 1 (f=1): [___w] [57.2% done] [0K/31731K /s] [0 /7747  iops] [eta 03m:00s]     
+seq-read: (groupid=0, jobs=1): err= 0: pid=17693
+  read : io=3039.6MB, bw=51866KB/s, iops=12966 , runt= 60001msec
+    slat (usec): min=2 , max=370 , avg= 4.83, stdev= 2.17
+    clat (usec): min=75 , max=1328 , avg=302.17, stdev=13.56
+     lat (usec): min=162 , max=1338 , avg=307.22, stdev=13.41
+    clat percentiles (usec):
+     |  1.00th=[  294],  5.00th=[  298], 10.00th=[  298], 20.00th=[  298],
+     | 30.00th=[  302], 40.00th=[  302], 50.00th=[  302], 60.00th=[  302],
+     | 70.00th=[  302], 80.00th=[  306], 90.00th=[  306], 95.00th=[  310],
+     | 99.00th=[  330], 99.50th=[  366], 99.90th=[  426], 99.95th=[  446],
+     | 99.99th=[  812]
+    bw (KB/s)  : min=51672, max=51976, per=100.00%, avg=51871.06, stdev=67.18
+    lat (usec) : 100=0.01%, 250=0.19%, 500=99.77%, 750=0.03%, 1000=0.01%
+    lat (msec) : 2=0.01%
+  cpu          : usr=26.57%, sys=37.59%, ctx=582288, majf=0, minf=31
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued    : total=r=777997/w=0/d=0, short=r=0/w=0/d=0
+rand-read: (groupid=1, jobs=1): err= 0: pid=17694
+  read : io=1033.9MB, bw=17643KB/s, iops=4410 , runt= 60001msec
+    slat (usec): min=4 , max=245 , avg= 8.76, stdev= 1.31
+    clat (usec): min=244 , max=2460 , avg=895.50, stdev=213.31
+     lat (usec): min=328 , max=2469 , avg=904.61, stdev=213.26
+    clat percentiles (usec):
+     |  1.00th=[  644],  5.00th=[  660], 10.00th=[  660], 20.00th=[  676],
+     | 30.00th=[  692], 40.00th=[  876], 50.00th=[  892], 60.00th=[  900],
+     | 70.00th=[  916], 80.00th=[ 1112], 90.00th=[ 1144], 95.00th=[ 1336],
+     | 99.00th=[ 1560], 99.50th=[ 1592], 99.90th=[ 1816], 99.95th=[ 1832],
+     | 99.99th=[ 2064]
+    bw (KB/s)  : min=17576, max=17840, per=100.00%, avg=17647.60, stdev=32.35
+    lat (usec) : 250=0.01%, 500=0.01%, 750=33.22%, 1000=41.60%
+    lat (msec) : 2=25.14%, 4=0.03%
+  cpu          : usr=8.87%, sys=22.45%, ctx=264655, majf=0, minf=31
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued    : total=r=264656/w=0/d=0, short=r=0/w=0/d=0
+seq-write: (groupid=2, jobs=1): err= 0: pid=17699
+  write: io=3019.8MB, bw=51536KB/s, iops=12884 , runt= 60001msec
+    slat (usec): min=3 , max=345 , avg= 6.01, stdev= 3.15
+    clat (usec): min=79 , max=42131 , avg=302.83, stdev=319.31
+     lat (usec): min=149 , max=42137 , avg=309.07, stdev=319.47
+    clat percentiles (usec):
+     |  1.00th=[  278],  5.00th=[  282], 10.00th=[  282], 20.00th=[  286],
+     | 30.00th=[  286], 40.00th=[  290], 50.00th=[  294], 60.00th=[  294],
+     | 70.00th=[  298], 80.00th=[  306], 90.00th=[  314], 95.00th=[  330],
+     | 99.00th=[  366], 99.50th=[  398], 99.90th=[  884], 99.95th=[ 2160],
+     | 99.99th=[18304]
+    bw (KB/s)  : min= 2562, max=53080, per=100.00%, avg=51547.24, stdev=5605.75
+    lat (usec) : 100=0.01%, 250=0.28%, 500=99.58%, 750=0.02%, 1000=0.02%
+    lat (msec) : 2=0.03%, 4=0.01%, 10=0.01%, 20=0.03%, 50=0.01%
+  cpu          : usr=25.02%, sys=42.05%, ctx=577173, majf=0, minf=26
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued    : total=r=0/w=773057/d=0, short=r=0/w=0/d=0
+rand-write: (groupid=3, jobs=1): err= 0: pid=17700
+  write: io=1727.4MB, bw=29480KB/s, iops=7370 , runt= 60001msec
+    slat (usec): min=4 , max=149 , avg= 8.28, stdev= 3.97
+    clat (usec): min=90 , max=42195 , avg=532.24, stdev=741.51
+     lat (usec): min=152 , max=42203 , avg=540.80, stdev=741.61
+    clat percentiles (usec):
+     |  1.00th=[  262],  5.00th=[  270], 10.00th=[  286], 20.00th=[  366],
+     | 30.00th=[  410], 40.00th=[  450], 50.00th=[  482], 60.00th=[  516],
+     | 70.00th=[  564], 80.00th=[  628], 90.00th=[  732], 95.00th=[  812],
+     | 99.00th=[ 1004], 99.50th=[ 1112], 99.90th=[18560], 99.95th=[18816],
+     | 99.99th=[20352]
+    bw (KB/s)  : min= 2131, max=36648, per=100.00%, avg=29481.93, stdev=6024.61
+    lat (usec) : 100=0.01%, 250=0.05%, 500=54.70%, 750=36.76%, 1000=7.47%
+    lat (msec) : 2=0.84%, 4=0.02%, 10=0.01%, 20=0.14%, 50=0.01%
+  cpu          : usr=17.53%, sys=33.39%, ctx=440039, majf=0, minf=25
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued    : total=r=0/w=442208/d=0, short=r=0/w=0/d=0
+
+Run status group 0 (all jobs):
+   READ: io=3039.6MB, aggrb=51865KB/s, minb=51865KB/s, maxb=51865KB/s, mint=60001msec, maxt=60001msec
+
+Run status group 1 (all jobs):
+   READ: io=1033.9MB, aggrb=17643KB/s, minb=17643KB/s, maxb=17643KB/s, mint=60001msec, maxt=60001msec
+
+Run status group 2 (all jobs):
+  WRITE: io=3019.8MB, aggrb=51536KB/s, minb=51536KB/s, maxb=51536KB/s, mint=60001msec, maxt=60001msec
+
+Run status group 3 (all jobs):
+  WRITE: io=1727.4MB, aggrb=29480KB/s, minb=29480KB/s, maxb=29480KB/s, mint=60001msec, maxt=60001msec
+
+Disk stats (read/write):
+  sdb: ios=848410/1021935, merge=194243/192813, ticks=357438/344512, in_queue=701086, util=99.74%

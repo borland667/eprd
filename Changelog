@@ -1,0 +1,49 @@
+release                         : 0.4.2  2012-05-30
+                                : Close the filedescriptor when deregistering the
+                                : eprd device.
+release                         : 0.4.1  2012-05-16
+                                : Small fix of determine_iotype.
+                                : Another small fix that allows compilation 
+                                : on 32 bit systems
+release                         : 0.4.0  2012-05-08
+                                : Improve the caching algorithm when smaller then 4k
+                                : blocks are written or read.
+release                         : 0.3.1  2012-05-04
+                                : Fix a possible deadlock
+release                         : 0.3.0  2012-05-03
+                                : Added a quick fix for a huge data corruption bug!
+                                : This bug was introduced when I added support for
+                                : smaller then 4k sector sizes.
+release                         : 0.2.0  2012-04-27
+                                : Make eprdcontrol minor dynamic
+                                : as suggested by Roman Prokopovich. Thanks!
+release                         : 0.1.7  2012-04-16
+                                : EPRD now recognizes RANDOM or SEQUENTIAL IO.
+                                : Only when the io is of random nature EPRD will
+                                : cache. Otherwise it will just write the 
+                                : incoming data to disk without delay.
+release                         : 0.1.6  2012-04-15
+                                : EPRD now supports other then 4k sector sizes
+                                : and now defaults to 512 bytes since for example
+                                : vmware can not handle larger sector size.
+                                : The caching algorithm is much improved as well.
+release                         : 0.1.2  2012-04-08
+        Resolved problems       : Resolved a data corruption bug
+                                : caused by insufficient locking.
+                                : ext4 and xfs now log that barriers are
+                                : unavailable when eprd has barriers disabled.
+                                : Solves a problem where eprd would still
+                                : write to disk when it should only write when
+                                : being registered or unregistered.
+                                : Improved caching algorithm.
+        Known problems          :
+release                         : 0.1.1  2012-04-06
+        Resolved problems       : Added _LARGEFILE64_SOURCE to eprd_setup
+                                : to make it possible to use large devices.
+        Resolved problems       : Added _LARGEFILE64_SOURCE to eprd_setup
+                                : to make it possible to use large devices.
+        Known problems          :
+
+Initial release                 : 0.1.0  2012-04-04
+        Resolved problems       :
+        Known problems          :

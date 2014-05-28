@@ -1,0 +1,70 @@
+
+
+     Eventually Persistent Ram Disk
+
+EPRD is an eventually persistent ramdisk.
+
+This blockdevice can be configured in a number of ways.
+The first way to configure EPRD is to assign a certain amount
+of ram to eprd. In this mode no disk io will ever take 
+place except when the device is configured or unconfigured.
+When the device is created it will simply load the data
+from disk in memory. When the device is remove the data will
+be save to disk.
+
+You can create this type of disk backed ramdisk like this:
+insmod ./eprd.ko
+./eprd_setup -f /data/persramdisk.img -s 1G -c
+Now device /dev/eprda will be created.
+
+To unload the device simply type :
+rmmod eprd or eprd_setup -d /dev/eprda
+
+** Please note that the -c parameter means create and should
+only be used the first time. **
+
+You can however also create a ramdisk that will have it's
+changes flushed to disk every N seconds and instead of keeping
+everything in ram it only allocated 512M for caching.
+
+./eprd_setup -f /data/saverimg -s 10G -m 3 -c -p512M
+
+In this example the data is flushed to disk every 3 seconds.
+
+Although this is already somewhat safer there is an even
+more 'reliable' mode of operation.
+
+./eprd_setup -f /data/saverimg -s 10G -m 3 -c -p512M -b
+
+EPRD supports barriers. So when the device is configured with
+the -b option a sync() on the filesystem will mean a sync of 
+the blockdevice and all 'dirty' blocks in the cache will be flushed
+to disk.
+
+You can easily test the effect of barrier support when you format
+eprd with ext4 or xfs. In this example I will use ext4
+mkfs.ext4 /dev/eprda
+mount /dev/eprda /mnt -obarrier=0
+
+root@saturn:/mnt# writetest
+running: 1000 ops
+Elapsed time: 0.029147 seconds
+1000 ops: 34308.85 ops per second
+
+While after : mount -oremount,barrier=1 /mnt
+root@saturn:/mnt# writetest
+running: 1000 ops
+Elapsed time: 42.926026 seconds
+1000 ops:   23.30 ops per second
+
+As you can see the difference is huge.
+
+EPRD can also be used with raw devices:
+./eprd_setup -f /dev/sdc -m 3 -p512M -b
+
+The example above creates a new eprd device that is backed by
+a raw device. Please note that you do not need to specify -c
+when a raw device is used.
+
+tools/writetest is a small tool provided by Oracle
+for testing Berkeley DB performance. 
